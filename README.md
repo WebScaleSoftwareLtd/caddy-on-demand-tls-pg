@@ -12,11 +12,10 @@ By default, the application will run on `:8383`. This is fine for within Docker 
 
 To build a config, we will need to make a JSON object with the following items:
 
-| Key          | Comments                                                                                                                                                                             |   |   |   |
-|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|---|---|
-| postgres_uri | The URI to use to connect to Postgres. Since we use pgxpool under the hood, this also handles connection pooling. You can use pool_max_conns in the query parameters to handle this. |   |   |   |
-| one_of       | An array of {"table_name": string, "column": string} that will be checked as equal to the domain.                                                                                    |   |   |   |
-|              |                                                                                                                                                                                      |   |   |   |
+| Key          | Comments                                                                                                                                                                             |
+|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| postgres_uri | The URI to use to connect to Postgres. Since we use pgxpool under the hood, this also handles connection pooling. You can use pool_max_conns in the query parameters to handle this. |
+| one_of       | An array of {"table_name": string, "column": string} that will be checked as equal to the domain.                                                                                    |                                                                       |   |   |   |
 
 > ⚠ **Both table_name and column are not sanitized!** We deemed this to not be a risk since the only people managing this deployment should only be the people managing the relationship between the web server and backend anyway, but it is something to be aware of. The `domain` sent to the database is sanitized.
 
